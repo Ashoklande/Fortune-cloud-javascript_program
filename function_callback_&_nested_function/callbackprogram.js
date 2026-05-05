@@ -1,15 +1,34 @@
 
 
-function myfunction(name,callback){
-    console.log(name);
-    callback();
+// function myfunction(name,callback){
+//     console.log(name);
+//     callback();
 
+// }
+
+// function end(){
+//     console.log("This is end function.");
+// }
+
+// myfunction("Ashoka",end);
+
+
+function placeorder(Docallback,Donecallback){
+    console.log("order placeorderd.");
+    Docallback(Donecallback);
 }
 
-function end(){
-    console.log("This is end function.");
+function doPayment(callback){
+    console.log(" Do payment.");
+    callback()
+    
 }
 
-myfunction("Ashoka",end);
+function paymentDone(){
+    console.log("payment Done");
+    
+}
 
 
+
+placeorder(doPayment,paymentDone);
