@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+</head>
+<body>
+
+<form id="myForm">
+    <!-- Name -->
+    <label>Name:</label><br>
+    <input type="text" id="name"><br><br>
+
+    <!-- Email -->
+    <label>Email:</label><br>
+    <input type="text" id="email"><br><br>
+
+    <!-- Mobile -->
+    <label>Mobile:</label><br>
+    <input type="text" id="mobile"><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<p id="error" style="color:red;"></p>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // stop form submit
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let mobile = document.getElementById("mobile").value.trim();
+
+        let error = "";
+
+        // Name validation
+        if (name.length < 3) {
+            error = "Name must be at least 3 characters";
+        }
+
+        // Email validation
+        else if (!email.includes("@") || !email.includes(".")) {
+            error = "Enter valid email";
+        }
+
+        // Mobile validation (10 digits)
+        else if (!/^[0-9]{10}$/.test(mobile)) {
+            error = "Mobile must be 10 digits";
+        }
+
+        if (error) {
+            document.getElementById("error").innerText = error;
+        } else {
+            document.getElementById("error").innerText = "Form submitted successfully!";
+        }
+    });
+</script>
+
+</body>
+</html>

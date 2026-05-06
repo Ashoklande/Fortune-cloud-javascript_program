@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <span style="display: block; margin-bottom: 24px; color: brown; font-size:x-large;">0</span>
+    <textarea rows="25" cols="25" placeholder="Type something" name="" id="text">
+
+    </textarea>
+
+    <script>
+        let count = 0;
+        document.querySelector("#text").addEventListener("keyup",(e)=>{
+            if(e.key === "Backspace"){
+                if (count ===0 ) return;
+             count--;
+             document.querySelector("span").innerText = count;    
+            }else{
+             count++;
+             document.querySelector("span").innerText = count;
+            }
+            
+             
+        });
+        
+    </script>
+</body>
+</html>
