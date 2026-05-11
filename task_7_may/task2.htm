@@ -1,0 +1,55 @@
+<!-- 2) Develop a program to validate an email address entered by the user. The program should check whether the email contains @, a domain extension such as .com, .in, etc., and ensure that it does not contain any spaces or invalid characters. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="submit-form">
+        <input type="text" id="name">
+        <button type="submit">check</button>
+    </form>
+    <p class="error" style="color: red; "></p>
+
+    <script>
+            
+            document.querySelector("#submit-form").addEventListener("submit" , (e )=>{
+                e.preventDefault();
+                const error = document.querySelector(".error")
+                let name = document.getElementById("name").value;
+                if(name === ''){
+                    error.innerText = "Enter value ";
+                    return;
+                }
+                if(!name.includes())
+                if(!name.includes("@")){
+                    error.innerText = "@ missing. ";
+                    return;
+                }
+
+                if(!name.includes(".com") && !name.includes(".in")){
+                    error.innerText = " should end with .com to .in ";
+                    return;
+                }
+                if(name.includes(" ")){
+                    error.innerText = "Email should not contain whitespace. ";
+                    return;
+                }
+               let invalidChars = ["#", "$", "%", "&"];
+
+            for(let char of invalidChars){
+                if(name.includes(char)){
+                    error.innerText = "Email contains invalid characters";
+                    return;
+                }
+            }
+
+            error.style.color = "green";
+            error.innerText = "Email submitted successfully";
+
+        });
+    </script>
+</body>
+</html>

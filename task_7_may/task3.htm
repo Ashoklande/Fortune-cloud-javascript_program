@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Check</title>
+</head>
+<body>
+
+    <form id="password-check">
+
+        <input type="password" id="pass">
+
+        <button type="button" id="toggleButton">
+            Show password
+        </button>
+
+        <button style="display:block; margin-top:20px;" type="submit">
+            Check
+        </button>
+
+    </form>
+
+    <p id="error"></p>
+
+    <script>
+
+        const error = document.querySelector("#error");
+        const togglebutton = document.querySelector("#toggleButton");
+
+        // Toggle password
+        togglebutton.addEventListener("click", function () {
+
+            const passwordInput = document.querySelector("#pass");
+
+            if(togglebutton.innerText === "Show password"){
+
+                passwordInput.type = "text";
+                togglebutton.innerText = "Hide password";
+
+            } else {
+
+                passwordInput.type = "password";
+                togglebutton.innerText = "Show password";
+
+            }
+
+        });
+
+        // Password validation
+        document.querySelector("#password-check")
+        .addEventListener("submit", (e) => {
+
+            e.preventDefault();
+
+            const password = document.querySelector("#pass").value;
+
+            // Empty
+            if(password === ''){
+                error.innerText = "Empty password";
+                error.style.color = "red";
+                return;
+            }
+
+            // Length
+            if(password.length < 8){
+                error.innerText = "Password must be at least 8 characters";
+                error.style.color = "red";
+                return;
+            }
+
+            // Space
+            if(password.includes(" ")){
+                error.innerText = "Password should not contain spaces";
+                error.style.color = "red";
+                return;
+            }
+
+            // Lowercase
+            if(!(/[a-z]/).test(password)){
+                error.innerText = "Password must contain a lowercase letter";
+                error.style.color = "red";
+                return;
+            }
+
+            // Uppercase
+            if(!(/[A-Z]/).test(password)){
+                error.innerText = "Password must contain an uppercase letter";
+                error.style.color = "red";
+                return;
+            }
+
+            // Number
+            if(!(/[0-9]/).test(password)){
+                error.innerText = "Password must contain a number";
+                error.style.color = "red";
+                return;
+            }
+
+            // Special character
+            if(!(/[!@#$%^&*(),.?":{}|<>]/).test(password)){
+                error.innerText = "Password must contain a special character";
+                error.style.color = "red";
+                return;
+            }
+
+            // Success
+            error.innerText = "Strong Password";
+            error.style.color = "green";
+
+        });
+
+    </script>
+
+</body>
+</html>

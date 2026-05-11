@@ -1,0 +1,31 @@
+<!-- 4) Create a program that takes a string as input and counts the frequency of each character present in the string. The program should display each character along with the number of times it appears. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <script>
+       const string = prompt("Enter a string: ");
+       const freq = {};
+       for(let char of string){
+          if(freq[char]){
+            freq[char]++;
+          }else{
+            freq[char] = 1;
+          }
+       }
+       
+       for(let key in freq){
+        document.write(key + " : " + freq[key] + "<br>");
+    }
+
+    //    console.log(freq);
+       
+
+      </script>
+</body>
+</html>
