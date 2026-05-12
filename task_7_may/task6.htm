@@ -1,0 +1,57 @@
+<!-- 6) Write a program that accepts a string and finds the character that appears the maximum number of times. If multiple characters have the same highest frequency, display all of them. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+        <input type="text" id="string">
+         
+        <p class="result">0</p>
+
+        <script>
+            //checkFreq method
+            function CheckFreqchar(string){
+
+                let freq = {};
+
+                for (let ch of string) {
+
+                if (ch === " ") continue;
+
+                freq[ch] = (freq[ch] || 0) + 1;
+            }
+
+                let max  = 0;
+                for(let key in freq){
+                    if(freq[key] > max){
+                        max = freq[key];
+                    }
+                }
+
+                let result = [];
+
+                for(let key in freq){
+                    if(freq[key] === max){
+                        result.push(`${key} : ${freq[key]}`);
+                    }
+                }
+
+                return result;
+            }
+            
+            document.getElementById("string").addEventListener("keyup" ,(e) =>{
+                const result = CheckFreqchar(e.target.value.trim());
+                document.querySelector(".result").innerText = result;
+            });
+        </script>
+    
+
+
+</body>
+</html>
