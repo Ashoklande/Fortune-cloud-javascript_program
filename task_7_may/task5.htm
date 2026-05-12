@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+<body>
+
+<script>
+
+    let palindromeString = prompt("Enter a String");
+
+    // Remove spaces & special characters
+    let name = palindromeString
+        .replace(/[^a-zA-Z0-9]/g, "")
+        .toLowerCase();
+
+    let i = 0;
+    let j = name.length - 1;
+
+    let isPalindrome = true;
+
+    while (i < j) {
+
+        if (name[i] !== name[j]) {
+            isPalindrome = false;
+            break;
+        }
+
+        i++;
+        j--;
+    }
+
+    if (isPalindrome) {
+        document.write("String is palindrome");
+    } else {
+        document.write("Not a palindrome");
+    }
+
+</script>
+
+</body>
+</html>
