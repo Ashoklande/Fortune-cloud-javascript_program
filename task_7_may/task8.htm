@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Slug Generator</title>
+
+    
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>URL Slug Generator</h2>
+
+        <input 
+            type="text" 
+            id="title" 
+            placeholder="Enter title or sentence"
+        >
+
+        <div class="result">
+            URL slug will appear here
+        </div>
+
+    </div>
+
+    <script>
+
+        document.querySelector("#title")
+        .addEventListener("keyup", (e) => {
+
+            let value = e.target.value;
+
+            
+            let slug = value.toLowerCase()
+
+               
+                .trim()
+
+                
+                .replace(/[^a-z0-9\s]/g, "")
+
+                
+                .replace(/\s+/g, "-");
+
+            document.querySelector(".result").innerText = slug;
+
+        });
+
+    </script>
+
+</body>
+</html>
