@@ -1,0 +1,36 @@
+<!-- 7) Create a program that takes a sentence as input, splits it into words, and counts how many times each word appears in the sentence. The program should ignore case differences while counting. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>word splitting </title>
+</head>
+<body>
+    
+    <input type="text" name="" id="sentence">
+
+    <p></p>
+
+    <script>
+
+        document.querySelector("#sentence").addEventListener("keyup",(e)=>{
+            let value = e.target.value.toLowerCase();
+            const result ={};
+            let words = value.split(" ");
+
+            words.forEach(element => {
+               result[element] = (result[element] || 0) + 1;
+            });
+
+            document.querySelector("p").innerText =
+                JSON.stringify(result);
+
+        })
+
+    </script>
+
+</body>
+</html>
