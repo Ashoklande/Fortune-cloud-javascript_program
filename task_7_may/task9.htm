@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template String Replacer</title>
+
+  
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>Template String Replacer</h2>
+
+        <textarea id="template" placeholder="Type template with placeholders..."></textarea>
+
+        <div class="result">
+            
+        </div>
+
+    </div>
+
+    <script>
+
+    
+        const data = {
+            name: "Ashok",
+            company: "OpenAI",
+            role: "Frontend Developer"
+        };
+
+        document.querySelector("#template")
+        .addEventListener("keyup", (e) => {
+
+            let text = e.target.value;
+
+            // Replace placeholders
+            let finalString = text.replace(/{{(.*?)}}/g, (match, key) => {
+
+                key = key.trim();
+
+                return data[key] || "Not Found";
+
+            });
+
+            document.querySelector(".result").innerText = finalString;
+
+        });
+
+    </script>
+
+</body>
+</html>

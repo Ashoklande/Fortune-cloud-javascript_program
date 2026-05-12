@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Compression</title>
+
+  
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>String Compression & Decompression</h2>
+
+        <input 
+            type="text" 
+            id="text" 
+            placeholder="Enter string..."
+        >
+
+        <div class="box">
+            <div class="title">Compressed:</div>
+            <div class="compressed"></div>
+        </div>
+
+        <div class="box">
+            <div class="title">Decompressed:</div>
+            <div class="decompressed"></div>
+        </div>
+
+    </div>
+
+    <script>
+
+        const input = document.querySelector("#text");
+
+        input.addEventListener("keyup", (e) => {
+
+            let str = e.target.value;
+
+            if(str.length === 0){
+                document.querySelector(".compressed").innerText = "";
+                document.querySelector(".decompressed").innerText = "";
+                return;
+            }
+
+            // Compression
+            let compressed = "";
+
+            let count = 1;
+
+            for(let i = 0; i < str.length; i++){
+
+                if(str[i] === str[i + 1]){
+                    count++;
+                }
+                else{
+                    compressed += str[i] + count;
+                    count = 1;
+                }
+
+            }
+
+            document.querySelector(".compressed")
+            .innerText = compressed;
+
+            // Decompression
+            let decompressed = "";
+
+            for(let i = 0; i < compressed.length; i += 2){
+
+                let char = compressed[i];
+                let num = Number(compressed[i + 1]);
+
+                decompressed += char.repeat(num);
+
+            }
+
+            document.querySelector(".decompressed")
+            .innerText = decompressed;
+
+        });
+
+    </script>
+
+</body>
+</html>
